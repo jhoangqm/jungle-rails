@@ -3,8 +3,8 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     product_ids = []
-    @productsArr = @order.line_items.map{|item| {product: Product.find(item.product_id), quantity:item.quantity }}
   end
+  helper_method :order
 
   def create
     charge = perform_stripe_charge
